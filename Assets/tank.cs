@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class tank : MonoBehaviour
 {
-    private int health = 100;
-    private int visionRange = 3;
-    private int fireRange = 2;
-    private int damage = 25;
-    private int nbSmokes = 2;
+    public int health = 100;
+    public int visionRange = 2;
+    public int fireRange = 1;
+    public int damage = 25;
+    public int nbSmokes = 2;
 
     private bool bonusRangeActivated = false;
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class tank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+ 
     }
 
     public void initTank(int hp, int vision, int fire, int dmg, int smokes)
