@@ -9,6 +9,7 @@ public class tank : MonoBehaviour
     public int fireRange = 1;
     public int damage = 25;
     public int nbSmokes = 2;
+    [SerializeField] private string myself;
 
     private bool bonusRangeActivated = false;
     // Start is called before the first frame update
@@ -20,9 +21,8 @@ public class tank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
-    }
 
+    }
     public void initTank(int hp, int vision, int fire, int dmg, int smokes)
     {
         this.health = hp;
@@ -93,5 +93,10 @@ public class tank : MonoBehaviour
     public bool getBonusRangeActivated()
     {
         return this.bonusRangeActivated;
+    }
+
+    public void SwitchMaterial(Material m)
+    {
+        gameObject.GetComponent<MeshRenderer>().material = m;
     }
 }
