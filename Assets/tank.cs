@@ -9,12 +9,13 @@ public class tank : MonoBehaviour
     public int fireRange = 1;
     public int damage = 25;
     public int nbSmokes = 2;
+    
 
     private bool bonusRangeActivated = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+       
     }
 
     // Update is called once per frame
