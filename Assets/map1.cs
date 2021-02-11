@@ -80,11 +80,15 @@ public class map1 : MonoBehaviour
         {
             for (int j = 0; j < 4; j++)
             {
-                //call function returning boolean 
-                //if boolean true:
-                res[0] = i;
-                res[1] = j;
-                break;
+                bool visible = tokenMap[i, j].GetComponent<ChildObjectsActivator>().getVisibleTile();
+                if (visible)
+                {
+                    res[0] = i;
+                    res[1] = j;
+                    Debug.Log("Pos i: " + i + " Pos j: ");
+                    break;
+                }
+                
             }
         }
         return res;
