@@ -5,6 +5,7 @@ using UnityEngine;
 public class map1 : MonoBehaviour
 {
     public GameObject[] tokens = new GameObject[12];
+    public GameObject playerTank;
 
     int[,] map = new int[3, 4];
     GameObject[,] tokenMap = new GameObject[3, 4];
@@ -40,7 +41,7 @@ public class map1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        getCoords(playerTank); 
     }
 
     /* Checks if the move performed */
