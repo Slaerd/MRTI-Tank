@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class map1 : MonoBehaviour
 {
+    public GameObject[] tokens = new GameObject[12];
 
     int[,] map = new int[3, 4];
+    GameObject[,] tokenMap = new GameObject[3, 4];
     int[] oldPos = new int[2];
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,14 @@ public class map1 : MonoBehaviour
         map[3, 1] = 0;
         map[3, 2] = 0;
 
+
+        for(int i = 0; i < 3; i++)
+        {
+            for(int j = 0; j < 4; j++)
+            {
+                tokenMap[i, j] = tokens[i + j];
+            }
+        }
         oldPos[0] = 1;
         oldPos[1] = 3;
     }
@@ -65,8 +75,18 @@ public class map1 : MonoBehaviour
     public int[] getCoords(GameObject tank)
     {
         int[] res = new int[2];
-        res[0] = 0;
-        res[1] = 1;
+        
+        for (int i = 0; i < 3; i++)
+        {
+            for (int j = 0; j < 4; j++)
+            {
+                //call function returning boolean 
+                //if boolean true:
+                res[0] = i;
+                res[1] = j;
+                break;
+            }
+        }
         return res;
     }
 
