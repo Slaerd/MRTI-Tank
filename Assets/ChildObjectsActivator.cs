@@ -1,14 +1,25 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using Vuforia;
 //Attach to the image tracker
 public class ChildObjectsActivator : MonoBehaviour, ITrackableEventHandler
 {
+    bool visibleTile;//the variable we will use to determine if the tile is visible or not
     private TrackableBehaviour trackableBehaviour;
+
     void Start()
     {
+        visibleTile = true;//set all the tiles as currently seen at the beginning of the game
         trackableBehaviour = GetComponent<TrackableBehaviour>();
         if (trackableBehaviour)
             trackableBehaviour.RegisterTrackableEventHandler(this);
+    }
+
+    //getter for the visibleTile variable
+    public bool getVisibleTile()
+    {
+        return this.visibleTile;
     }
 
     public void OnTrackableStateChanged(
@@ -24,11 +35,13 @@ public class ChildObjectsActivator : MonoBehaviour, ITrackableEventHandler
     }
     private void OnTrackingFound()
     {
+        visibleTile = true; //in case we have sight of the tile again
         if (transform.childCount > 0)
             SetChildrenActive(true);
     }
     private void onTrackingLost()
     {
+        visibleTile = false; //when we lose sight of the tile
         if (transform.childCount > 0)
             SetChildrenActive(false);
     }
