@@ -10,6 +10,7 @@ public class ChildObjectsActivator : MonoBehaviour, ITrackableEventHandler
 
     void Start()
     {
+        Debug.Log("aled");
         visibleTile = true;//set all the tiles as currently seen at the beginning of the game
         trackableBehaviour = GetComponent<TrackableBehaviour>();
         if (trackableBehaviour)
@@ -22,6 +23,8 @@ public class ChildObjectsActivator : MonoBehaviour, ITrackableEventHandler
         return this.visibleTile;
     }
 
+
+    
     public void OnTrackableStateChanged(
       TrackableBehaviour.Status previousStatus,
       TrackableBehaviour.Status newStatus)
@@ -50,4 +53,5 @@ public class ChildObjectsActivator : MonoBehaviour, ITrackableEventHandler
         for (int i = 0; i <= transform.childCount; i++)
             transform.GetChild(i++).gameObject.SetActive(activeState);
     }
+        
 }
