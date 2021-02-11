@@ -81,7 +81,7 @@ public class map1 : MonoBehaviour
             for (int j = 0; j < 4; j++)
             {
                 bool visible = tokenMap[i, j].GetComponent<ChildObjectsActivator>().getVisibleTile();
-                if (visible)
+                if (!visible)
                 {
                     res[0] = i;
                     res[1] = j;
