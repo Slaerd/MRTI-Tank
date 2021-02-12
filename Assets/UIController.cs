@@ -13,19 +13,22 @@ public class UIController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("bruh");
         if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
         {
+
             Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
             RaycastHit hit;
-
+            Debug.Log("nice click nigga");
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayer))
             {
+                Debug.Log("Nice click on tank nigga");
                 ToggleSelectTank(hit.transform.gameObject);
             }
             else
