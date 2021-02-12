@@ -464,7 +464,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0, z: 0.5}
+      m_Extent: {x: 0.35387895, y: 0, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -543,7 +543,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 000000bf00000000000000bf000000000000803f000000000000000000000000000000bf000000000000003f000000000000803f00000000000000000000803f0000003f00000000000000bf000000000000803f000000000000803f000000000000003f000000000000003f000000000000803f000000000000803f0000803f
+    _typelessdata: 9f2fb5be00000000000000bf00000000ffff7f3f0000000000000000000000009f2fb5be000000000000003f00000000ffff7f3f00000000000000000000803f9f2fb53e00000000000000bf00000000ffff7f3f000000000000803f000000009f2fb53e000000000000003f00000000ffff7f3f000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -2941,14 +2941,14 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: '--- EMPTY ---'
+  mTrackableName: terrainTotal
   mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: '--- EMPTY ---'
-  mAspectRatio: 1
+  mDataSetPath: Vuforia/testForest_Tanks.xml
+  mAspectRatio: 1.4129125
   mImageTargetType: 0
-  mWidth: 0.29711464
-  mHeight: 0.419797
+  mWidth: 0.297
+  mHeight: 0.419635
 --- !u!4 &1058401372
 Transform:
   m_ObjectHideFlags: 0
@@ -2958,7 +2958,7 @@ Transform:
   m_GameObject: {fileID: 1058401366}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.021}
-  m_LocalScale: {x: 0.419797, y: 0.419797, z: 0.419797}
+  m_LocalScale: {x: 0.419635, y: 0.419635, z: 0.419635}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
@@ -3475,7 +3475,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: '--- EMPTY ---Material
+  m_Name: 'terrainTotalMaterial
 
     16716'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
@@ -3490,7 +3490,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 0f888f0df82343d2a5de69fc4bd7d096, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
