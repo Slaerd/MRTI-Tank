@@ -21,9 +21,8 @@ public class tank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
- 
-    }
 
+    }
     public void initTank(int hp, int vision, int fire, int dmg, int smokes)
     {
         this.health = hp;
@@ -94,5 +93,10 @@ public class tank : MonoBehaviour
     public bool getBonusRangeActivated()
     {
         return this.bonusRangeActivated;
+    }
+
+    public void SwitchMaterial(Material m)
+    {
+        gameObject.GetComponent<MeshRenderer>().material = m;
     }
 }
