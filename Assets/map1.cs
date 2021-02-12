@@ -7,8 +7,8 @@ public class map1 : MonoBehaviour
     public GameObject[] tokens = new GameObject[12];
     public GameObject playerTank;
 
-    int[,] map = new int[3, 4];
-    GameObject[,] tokenMap = new GameObject[3, 4];
+    int[,] map = new int[4, 3];
+    GameObject[,] tokenMap = new GameObject[4, 3];
     int[] oldPos = new int[2];
     // Start is called before the first frame update
     void Start()
@@ -27,27 +27,28 @@ public class map1 : MonoBehaviour
         map[3, 2] = 0;
 
 
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 4; i++)
         {
-            for(int j = 0; j < 4; j++)
+            for(int j = 0; j < 3; j++)
             {
                 tokenMap[i, j] = tokens[i + j];
             }
         }
-        oldPos[0] = 1;
-        oldPos[1] = 3;
+        oldPos[0] = 3;
+        oldPos[1] = 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        getCoords(playerTank); 
+        getCoords();
+        Debug.Log("Ca ecrit klkechose");
     }
 
     /* Checks if the move performed */
     public bool correctMove(GameObject tank)
     {
-        int[] move = getCoords(tank);
+        int[] move = getCoords();
         if(oldPos[0] != move[0] && oldPos[1] != move[1]) return false;
         if (oldPos[0] - move[0] > 1 || oldPos[0] - move[0] < -1) return false;
         if (oldPos[1] - move[1] > 1 || oldPos[1] - move[1] < -1) return false;
@@ -56,7 +57,7 @@ public class map1 : MonoBehaviour
 
     public bool isInRange(GameObject tank, int[] fire)
     {
-        int[] tankPos = getCoords(tank);
+        int[] tankPos = getCoords();
        
         if (tankPos[0] != fire[0] && tankPos[1] != fire[1]) return false;
         if (tankPos[0] - fire[0] > 2 || tankPos[0] - fire[0] < -2) return false;
@@ -67,26 +68,26 @@ public class map1 : MonoBehaviour
     /* Used to change the "map" grid when placing the tank at the begining of the game */
     public void placeTank(GameObject tank)
     {
-        int[] pos = getCoords(tank);
+        int[] pos = getCoords();
         map[pos[0], pos[1]] = 1;
         map[oldPos[0], oldPos[1]] = 0;
         oldPos = pos;
     }
 
-    public int[] getCoords(GameObject tank)
+    public int[] getCoords()
     {
         int[] res = new int[2];
         
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 3; j++)
             {
                 bool visible = tokenMap[i, j].GetComponent<ChildObjectsActivator>().getVisibleTile();
                 if (!visible)
                 {
                     res[0] = i;
                     res[1] = j;
-                    Debug.Log("Pos i: " + i + " Pos j: ");
+                    Debug.Log("Pos i: " + i + " Pos j: "+j);
                     break;
                 }
                 
