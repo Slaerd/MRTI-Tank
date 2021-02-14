@@ -10,7 +10,8 @@ public class tileStats : MonoBehaviour
     void Start()
     {
         //retrive the name of the current gameobject
-        tileName = associatedTile.name; 
+        tileName = associatedTile.name;
+        Debug.Log("La tile qui a été mis sur ce script porte le nom: " + tileName);
     }
 
     // Update is called once per frame
