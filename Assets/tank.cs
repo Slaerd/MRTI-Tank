@@ -32,22 +32,26 @@ public class tank : MonoBehaviour
         this.nbSmokes = smokes;
     }
 
+    //receive dmg to health
     public void receiveDamage(int dmg)
     {
         this.health = this.health - dmg;
     }
 
+    //check if game is over
     public bool isDestroyed()
     {
         if (this.health <= 0) return true;
         return false;
     }
 
+    //fires a smoke only if you have enough ammo AND are not in the bonusRange mode
     public void fireSmoke()
     {
         if (nbSmokes > 0 && this.bonusRangeActivated) this.nbSmokes = this.nbSmokes - 1;
     }
 
+    //toggle the bonus vision range
     public void toggleBonusVision()
     {
         if (this.bonusRangeActivated)
@@ -59,10 +63,13 @@ public class tank : MonoBehaviour
         this.visionRange = this.visionRange + 2;
     }
 
-    public void tileBonus(int n)
+    //retrievs the tileBonus from the tile the tank is located on
+    public void GetTileBonus(GameObject tile)
     {
-        this.visionRange = this.visionRange + n;
+        this.visionRange = this.visionRange + tile.GetComponent<tileStats>().getTileBonus();
     }
+
+    
 
     // GETTERS
     public int getHealth()

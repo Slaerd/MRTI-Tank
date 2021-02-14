@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
 //Attach to the image tracker
+
+[ExecuteAlways]
 public class ChildObjectsActivator : MonoBehaviour, ITrackableEventHandler
 {
     bool visibleTile;//the variable we will use to determine if the tile is visible or not
@@ -22,7 +24,6 @@ public class ChildObjectsActivator : MonoBehaviour, ITrackableEventHandler
     {
         return this.visibleTile;
     }
-
 
     
     public void OnTrackableStateChanged(
