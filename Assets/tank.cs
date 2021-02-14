@@ -10,8 +10,8 @@ public class tank : MonoBehaviour
     public int fireRange = 1;
     public int damage = 25;
     public int nbSmokes = 2;
-    
 
+    public GameObject currentTile;
     private bool bonusRangeActivated = false;
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class tank : MonoBehaviour
     void Update()
     {
         //apl cette ligne en lui donant le gameobject (la tile) sur laquelle tu es en train de tester
-        //applyTileBonus(...);
+        applyTileBonus(currentTile);
         Debug.Log("La visionRange du tank est de: " + this.visionRange);
     }
     public void initTank(int hp, int vision, int fire, int dmg, int smokes)
