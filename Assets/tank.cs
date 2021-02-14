@@ -6,6 +6,7 @@ public class tank : MonoBehaviour
 {
     public int health = 100;
     public int visionRange = 2;
+    public int defaultVisionRange = 2;
     public int fireRange = 1;
     public int damage = 25;
     public int nbSmokes = 2;
@@ -21,7 +22,9 @@ public class tank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //apl cette ligne en lui donant le gameobject (la tile) sur laquelle tu es en train de tester
+        //applyTileBonus(...);
+        Debug.Log("La visionRange du tank est de: " + this.visionRange);
     }
     public void initTank(int hp, int vision, int fire, int dmg, int smokes)
     {
@@ -32,37 +35,48 @@ public class tank : MonoBehaviour
         this.nbSmokes = smokes;
     }
 
+    //receive dmg to health
     public void receiveDamage(int dmg)
     {
         this.health = this.health - dmg;
     }
 
+    //check if game is over
     public bool isDestroyed()
     {
         if (this.health <= 0) return true;
         return false;
     }
 
+    //fires a smoke only if you have enough ammo AND are not in the bonusRange mode
     public void fireSmoke()
     {
         if (nbSmokes > 0 && this.bonusRangeActivated) this.nbSmokes = this.nbSmokes - 1;
     }
 
+    //toggle the bonus vision range
     public void toggleBonusVision()
     {
         if (this.bonusRangeActivated)
         {
             this.bonusRangeActivated = false;
             this.visionRange = this.visionRange - 2;
+            this.defaultVisionRange = this.defaultVisionRange - 2;
         }
         this.bonusRangeActivated = true;
         this.visionRange = this.visionRange + 2;
+        this.defaultVisionRange = this.defaultVisionRange + 2;
     }
 
-    public void tileBonus(int n)
+    //retrievs the tileBonus from the tile the tank is located on
+    public void applyTileBonus(GameObject tile)
     {
-        this.visionRange = this.visionRange + n;
+        //reset the vision range so it doesnt stack infinitely
+        this.visionRange = this.defaultVisionRange;
+        this.visionRange = this.visionRange + tile.GetComponent<tileStats>().getTileBonus();
     }
+
+    
 
     // GETTERS
     public int getHealth()

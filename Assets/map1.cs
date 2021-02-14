@@ -13,6 +13,7 @@ public class map1 : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //init the map, 2 is ennemy tank, 1 will be the player
         map[0, 0] = 0;
         map[0, 1] = 2;
         map[0, 2] = 0;
@@ -26,7 +27,7 @@ public class map1 : MonoBehaviour
         map[3, 1] = 0;
         map[3, 2] = 0;
 
-
+        //init the array containing all the tokens given as an global argument
         for(int i = 0; i < 4; i++)
         {
             for(int j = 0; j < 3; j++)
@@ -34,6 +35,7 @@ public class map1 : MonoBehaviour
                 tokenMap[i, j] = tokens[i + j];
             }
         }
+        //just to give a pos in case
         oldPos[0] = 3;
         oldPos[1] = 1;
     }
@@ -55,6 +57,7 @@ public class map1 : MonoBehaviour
         return true;   
     }
 
+    //chek if the tank is in range to fire on the target chosen
     public bool isInRange(GameObject tank, int[] fire)
     {
         int[] tankPos = getCoords();
@@ -74,6 +77,7 @@ public class map1 : MonoBehaviour
         oldPos = pos;
     }
 
+    //retrieves where the tank is at the moment of the function being called
     public int[] getCoords()
     {
         int[] res = new int[2];
