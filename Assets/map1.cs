@@ -77,20 +77,23 @@ public class map1 : MonoBehaviour
     public int[] getCoords()
     {
         int[] res = new int[2];
-        
+        res[0] = -1;
+        res[1] = 1;
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 3; j++)
             {
-                bool visible = tokenMap[i, j].GetComponent<ChildObjectsActivator>().getVisibleTile();
+                tokenMap[i,j].GetComponent<ChildObjectsActivator > ().Start();
+                // bool visible = tokenMap[i, j].GetComponent<ChildObjectsActivator>().getVisibleTile();
+                bool visible = true;
                 if (!visible)
                 {
                     res[0] = i;
                     res[1] = j;
                     Debug.Log("Pos i: " + i + " Pos j: "+j);
-                    break;
+                    return res;
                 }
-                
+
             }
         }
         return res;
