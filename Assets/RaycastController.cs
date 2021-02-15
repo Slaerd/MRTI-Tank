@@ -7,10 +7,13 @@ using UnityEngine.Events;
 public class RaycastController : MonoBehaviour
 {
     private GameObject selectedTank = null;
+    private int uiLayer = 1 << 5;
     private int tankLayerA = 1 << 8;
     private int tankLayerE = 1 << 9;
     [SerializeField] private Material tankTextureBasic;
     [SerializeField] private Material tankTextureSelected;
+    [SerializeField] private Camera arCam;
+    [SerializeField] private GameObject effectUI;
     private bool dragMotion;
     public static Action<GameObject,GameObject> onTankDrag;
 
@@ -18,12 +21,16 @@ public class RaycastController : MonoBehaviour
     void Start()
     {
         dragMotion = false;
+        effectUI.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         RaycastSelect();
+        if (selectedTank != null)
+            effectUI.GetComponent<Transform>().position =
+                new Vector3(200, 0, 0) + arCam.WorldToScreenPoint(selectedTank.GetComponent<Transform>().position);
     }
 
     public void RaycastSelect()
@@ -43,12 +50,20 @@ public class RaycastController : MonoBehaviour
                     hit.transform.gameObject.GetComponent<Tank>().ToggleSelect();
                     selectedTank = hit.transform.gameObject;
                     dragMotion = true;
+                    effectUI.SetActive(true);
                 }
                 else
                 {
-                    selectedTank?.GetComponent<Tank>().ToggleSelect();
-                    selectedTank = null;
+                    Debug.Log("Enter else");
+                    if(!Physics.Raycast(ray, out hit, Mathf.Infinity, uiLayer))
+                    {
+                        Debug.Log("Not clicking UI");
+                        effectUI.SetActive(false);
+                        selectedTank?.GetComponent<Tank>().ToggleSelect();
+                        selectedTank = null;
+                    }
                 }
+                
             }
             
             if(Input.touches[0].phase == TouchPhase.Ended)
