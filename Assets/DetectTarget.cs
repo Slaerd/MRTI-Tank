@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DetectTarget : MonoBehaviour
 {
-    public GameObject pl;
+    public GameObject tile;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,14 +14,14 @@ public class DetectTarget : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        bool ret = isTrackingMarker(pl);
-        Debug.Log("track status is = " + ret);
+        //bool ret = isTrackingMarker(tile);
+       // Debug.Log("track status is = " + ret);
     }
 
-    public bool isTrackingMarker(GameObject imageTargetName)
+    public bool isTrackingMarker()
     {
         //var imageTarget = GameObject.Find(imageTargetName);
-        var imageTarget = imageTargetName;
+        var imageTarget = this.tile;
         var trackable = imageTarget.GetComponent<Vuforia.TrackableBehaviour>();
         var status = trackable.CurrentStatus;
         return status == Vuforia.TrackableBehaviour.Status.TRACKED;
