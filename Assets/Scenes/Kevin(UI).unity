@@ -149,7 +149,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 296680308}
-  m_Mesh: {fileID: 1342040179}
+  m_Mesh: {fileID: 1362530587}
 --- !u!23 &296680310
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -167,7 +167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 1596705158}
+  - {fileID: 1764438071}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -478,13 +478,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
---- !u!43 &1342040179
+--- !u!43 &1362530587
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ImageTargetMesh24604
+  m_Name: ImageTargetMesh16314
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -732,7 +732,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!21 &1596705158
+--- !u!21 &1764438071
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -741,7 +741,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: 'tank_targetMaterial
 
-    18672'
+    16324'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -754,7 +754,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: af0f92eb61f54b86a70ccdc215cc71f9, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9bdef7315e71488fafc1164346be3460, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -946,7 +946,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4123013546424683256, guid: cff41b915f18f4f46b75f7ba44055974,
+        type: 3}
+      propertyPath: tankTextureBasic
+      value: 
+      objectReference: {fileID: 2100000, guid: ba32e2aeba06c406ab18bd1c5659c386, type: 2}
+    - target: {fileID: 4123013546424683256, guid: cff41b915f18f4f46b75f7ba44055974,
+        type: 3}
+      propertyPath: tankTextureSelected
+      value: 
+      objectReference: {fileID: 2100000, guid: 872bd5478358c6f4b8f57aeaca2d94be, type: 2}
+    m_RemovedComponents:
+    - {fileID: 4123013546424683258, guid: cff41b915f18f4f46b75f7ba44055974, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cff41b915f18f4f46b75f7ba44055974, type: 3}
 --- !u!4 &5006512734962342601 stripped
 Transform:

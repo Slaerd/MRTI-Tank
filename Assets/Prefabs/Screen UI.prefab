@@ -265,7 +265,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tankTextureBasic: {fileID: 2100000, guid: ba32e2aeba06c406ab18bd1c5659c386, type: 2}
-  tankTextureSelected: {fileID: 2100000, guid: 516527d5220174f9491d244e7c75ecaf, type: 2}
+  tankTextureSelected: {fileID: 2100000, guid: 872bd5478358c6f4b8f57aeaca2d94be, type: 2}
+  tankTextureTest: {fileID: 2100000, guid: 343f7f93e8a928f419f1a5438e556566, type: 2}
 --- !u!1 &3143164482710975238
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,7 +1051,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7230916931684660818}
   m_Layer: 5
-  m_Name: GameObject
+  m_Name: TankMenu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
