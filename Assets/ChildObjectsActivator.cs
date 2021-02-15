@@ -9,20 +9,22 @@ public class ChildObjectsActivator : MonoBehaviour, ITrackableEventHandler
 {
     bool visibleTile;//the variable we will use to determine if the tile is visible or not
     private TrackableBehaviour trackableBehaviour;
+    TrackableBehaviour.Status statusOut;
+    TrackableBehaviour.StatusInfo info;
 
-    void Start()
+    public void Start()
     {
         Debug.Log("aled");
-        visibleTile = true;//set all the tiles as currently seen at the beginning of the game
+        this.visibleTile = true;//set all the tiles as currently seen at the beginning of the game
         trackableBehaviour = GetComponent<TrackableBehaviour>();
         if (trackableBehaviour)
             trackableBehaviour.RegisterTrackableEventHandler(this);
     }
 
     //getter for the visibleTile variable
-    public bool getVisibleTile()
+    public TrackableBehaviour.Status getVisibleTile()
     {
-        return this.visibleTile;
+        return this.statusOut;
     }
 
     
@@ -33,21 +35,35 @@ public class ChildObjectsActivator : MonoBehaviour, ITrackableEventHandler
         if (newStatus == TrackableBehaviour.Status.DETECTED ||
             newStatus == TrackableBehaviour.Status.TRACKED ||
             newStatus == TrackableBehaviour.Status.EXTENDED_TRACKED)
+        {
             OnTrackingFound();
+            Debug.Log("il est parmi nous");
+        }
         else
+        {
             onTrackingLost();
+            Debug.Log("il est pas la");
+        }
     }
     private void OnTrackingFound()
     {
-        visibleTile = true; //in case we have sight of the tile again
+        this.visibleTile = true; //in case we have sight of the tile again
         if (transform.childCount > 0)
+        {
             SetChildrenActive(true);
+           
+        }
+        Debug.Log("dans onTrackingFounf");
     }
     private void onTrackingLost()
     {
-        visibleTile = false; //when we lose sight of the tile
+        this.visibleTile = false; //when we lose sight of the tile
         if (transform.childCount > 0)
+        {
             SetChildrenActive(false);
+            
+        }
+        Debug.Log("dans onTrackingLost");
     }
     private void SetChildrenActive(bool activeState)
     {

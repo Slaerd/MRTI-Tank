@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Vuforia;
 
 public class tileStats : MonoBehaviour
 {
@@ -17,7 +18,8 @@ public class tileStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        isTrackingMarker(associatedTile);
+        //Debug.Log("L'image est tracked : " + isTrackingMarker(associatedTile));
     }
 
     //returns the bonus of vision depending on the tile you are on
@@ -31,5 +33,14 @@ public class tileStats : MonoBehaviour
             return -1;
         //if no tile corresponds, send an "error"
         return -100;
+    }
+
+    public bool isTrackingMarker(GameObject imageTarget)
+    {
+        //var imageTarget = GameObject.Find(imageTargetName);
+        var trackable = imageTarget.GetComponent<TrackableBehaviour>();
+        var status = trackable.CurrentStatus;
+        Debug.Log("Le status du tracking est : " + status);
+        return status == TrackableBehaviour.Status.TRACKED;
     }
 }
