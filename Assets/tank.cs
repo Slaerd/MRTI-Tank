@@ -1,8 +1,11 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
-public class tank : MonoBehaviour
+public class Tank : MonoBehaviour
 {
     public int health = 100;
     public int visionRange = 2;
@@ -10,13 +13,22 @@ public class tank : MonoBehaviour
     public int fireRange = 1;
     public int damage = 25;
     public int nbSmokes = 2;
+    private bool selected;
+    [SerializeField] private Material tankTextureBasic;
+    [SerializeField] private Material tankTextureSelected;
+    [SerializeField] private Material tankTextureTargeted;
+    [SerializeField] private Text HP;
+    
+
 
     public GameObject currentTile;
     private bool bonusRangeActivated = false;
     // Start is called before the first frame update
     void Start()
     {
-       
+        selected = false;
+        RaycastController.onTankDrag += Attack;
+        tankTextureBasic = gameObject.GetComponent<MeshRenderer>().material;
     }
 
     // Update is called once per frame
@@ -24,8 +36,13 @@ public class tank : MonoBehaviour
     {
         //apl cette ligne en lui donant le gameobject (la tile) sur laquelle tu es en train de tester
         applyTileBonus(currentTile);
-        Debug.Log("La visionRange du tank est de: " + this.visionRange);
+        //Debug.Log("La visionRange du tank est de: " + this.visionRange);
     }
+
+    private void OnDestroy()
+    {
+    }
+
     public void initTank(int hp, int vision, int fire, int dmg, int smokes)
     {
         this.health = hp;
@@ -38,7 +55,8 @@ public class tank : MonoBehaviour
     //receive dmg to health
     public void receiveDamage(int dmg)
     {
-        this.health = this.health - dmg;
+        this.health -= dmg;
+        HP.text = this.health.ToString();
     }
 
     //check if game is over
@@ -75,8 +93,30 @@ public class tank : MonoBehaviour
         this.visionRange = this.defaultVisionRange;
         this.visionRange = this.visionRange + tile.GetComponent<tileStats>().getTileBonus();
     }
+    private static void Attack(GameObject attacker, GameObject defender)
+    {
+        if (!GameObject.ReferenceEquals(attacker, defender))
+            defender.GetComponent<Tank>().receiveDamage(attacker.GetComponent<Tank>().getDamage());
+    }
 
-    
+    public void ToggleSelect()
+    {
+        if (selected)
+            Untarget();
+        else
+            gameObject.GetComponent<MeshRenderer>().material = tankTextureSelected;
+        selected = !selected;
+    }
+
+    public void Untarget()
+    {
+        gameObject.GetComponent<MeshRenderer>().material = tankTextureBasic;
+    }
+
+    public void Target()
+    {
+        gameObject.GetComponent<MeshRenderer>().material = tankTextureTargeted;
+    }
 
     // GETTERS
     public int getHealth()
@@ -108,9 +148,5 @@ public class tank : MonoBehaviour
     {
         return this.bonusRangeActivated;
     }
-
-    public void SwitchMaterial(Material m)
-    {
-        gameObject.GetComponent<MeshRenderer>().material = m;
-    }
+    
 }
