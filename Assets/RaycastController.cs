@@ -6,7 +6,9 @@ using UnityEngine.Events;
 
 public class RaycastController : MonoBehaviour
 {
+    public bool playerTurn;
     private GameObject selectedTank = null;
+    private GameObject targetedTank = null;
     private int uiLayer = 1 << 5;
     private int tankLayerA = 1 << 8;
     private int tankLayerE = 1 << 9;
@@ -20,6 +22,8 @@ public class RaycastController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Pass.switchTurn += setPlayerTurn;
+        playerTurn = true;
         dragMotion = false;
         effectUI.SetActive(false);
     }
@@ -28,14 +32,17 @@ public class RaycastController : MonoBehaviour
     void Update()
     { 
         RaycastSelect();
-        if (selectedTank != null)
-            effectUI.GetComponent<Transform>().position =
-                new Vector3(200, 0, 0) + arCam.WorldToScreenPoint(selectedTank.GetComponent<Transform>().position);
+        if (selectedTank != null) 
+        {
+            effectUI.GetComponent<RectTransform>().position =
+                new Vector3(0, -100, 0) + arCam.WorldToScreenPoint(selectedTank.GetComponent<Transform>().position);
+            effectUI.SetActive(selectedTank.GetComponent<Renderer>().isVisible);
+        }
     }
 
     public void RaycastSelect()
     {
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && playerTurn)
         {
             Ray ray;
             RaycastHit hit = new RaycastHit();
@@ -66,17 +73,32 @@ public class RaycastController : MonoBehaviour
                 
             }
             
-            if(Input.touches[0].phase == TouchPhase.Ended)
+            if(Input.touches[0].phase == TouchPhase.Moved)
             {
                 if (dragMotion)
                 {
                     Ray ray2 = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                     RaycastHit hit2;
 
-                    if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerA))
+                    if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerA)
+                        && !GameObject.ReferenceEquals(selectedTank,hit2.transform.gameObject))
                     {
-                        onTankDrag.Invoke(selectedTank, hit2.transform.gameObject);
+                        targetedTank = hit2.transform.gameObject;
+                        targetedTank.GetComponent<Tank>().Target();
                     }
+                    else
+                    {
+                        targetedTank?.GetComponent<Tank>().Untarget();
+                        targetedTank = null;
+                    }
+                }
+            }
+
+            if(Input.touches[0].phase == TouchPhase.Ended)
+            {
+                if (dragMotion && targetedTank != null)
+                {
+                    onTankDrag.Invoke(selectedTank, targetedTank);
                 }
                 dragMotion = false;
             }
@@ -88,13 +110,8 @@ public class RaycastController : MonoBehaviour
         onTankDrag = null;
     }
 
-    public void ActivateUI(GameObject o)
+    public void setPlayerTurn(bool b)
     {
-        o.SetActive(true);
-    }
-
-    public void DeactivateUI(GameObject o)
-    {
-        o.SetActive(false);
+        playerTurn = b;
     }
 }

@@ -13,9 +13,10 @@ public class Tank : MonoBehaviour
     public int fireRange = 1;
     public int damage = 25;
     public int nbSmokes = 2;
-    public bool selected = false;
+    private bool selected;
     [SerializeField] private Material tankTextureBasic;
     [SerializeField] private Material tankTextureSelected;
+    [SerializeField] private Material tankTextureTargeted;
     [SerializeField] private Text HP;
     
 
@@ -25,6 +26,7 @@ public class Tank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        selected = false;
         RaycastController.onTankDrag += Attack;
         tankTextureBasic = gameObject.GetComponent<MeshRenderer>().material;
     }
@@ -34,12 +36,13 @@ public class Tank : MonoBehaviour
     {
         //apl cette ligne en lui donant le gameobject (la tile) sur laquelle tu es en train de tester
         applyTileBonus(currentTile);
-        Debug.Log("La visionRange du tank est de: " + this.visionRange);
+        //Debug.Log("La visionRange du tank est de: " + this.visionRange);
     }
 
     private void OnDestroy()
     {
     }
+
     public void initTank(int hp, int vision, int fire, int dmg, int smokes)
     {
         this.health = hp;
@@ -52,7 +55,7 @@ public class Tank : MonoBehaviour
     //receive dmg to health
     public void receiveDamage(int dmg)
     {
-        this.health = this.health - dmg;
+        this.health -= dmg;
         HP.text = this.health.ToString();
     }
 
@@ -92,17 +95,27 @@ public class Tank : MonoBehaviour
     }
     private static void Attack(GameObject attacker, GameObject defender)
     {
-        //if (!GameObject.ReferenceEquals(attacker, defender))
+        if (!GameObject.ReferenceEquals(attacker, defender))
             defender.GetComponent<Tank>().receiveDamage(attacker.GetComponent<Tank>().getDamage());
     }
 
     public void ToggleSelect()
     {
         if (selected)
-            gameObject.GetComponent<MeshRenderer>().material = tankTextureBasic;
+            Untarget();
         else
             gameObject.GetComponent<MeshRenderer>().material = tankTextureSelected;
         selected = !selected;
+    }
+
+    public void Untarget()
+    {
+        gameObject.GetComponent<MeshRenderer>().material = tankTextureBasic;
+    }
+
+    public void Target()
+    {
+        gameObject.GetComponent<MeshRenderer>().material = tankTextureTargeted;
     }
 
     // GETTERS
