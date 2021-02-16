@@ -18,13 +18,14 @@ public class tileStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isTrackingMarker(associatedTile);
+        //isTrackingMarker(associatedTile);
         //Debug.Log("L'image est tracked : " + isTrackingMarker(associatedTile));
     }
 
     //returns the bonus of vision depending on the tile you are on
     public int getTileBonus()
     {
+        Debug.Log("in getTileBonus");
         if (tileName.Contains("mountain"))
             return 10;
         if (tileName.Contains("plain"))

@@ -347,6 +347,7 @@ GameObject:
   - component: {fileID: 191872202}
   - component: {fileID: 191872201}
   - component: {fileID: 191872200}
+  - component: {fileID: 191872207}
   m_Layer: 0
   m_Name: forrest4
   m_TagString: Untagged
@@ -472,6 +473,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &191872207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191872199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 191872199}
 --- !u!1001 &193198353
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1412,6 +1426,7 @@ GameObject:
   - component: {fileID: 681881142}
   - component: {fileID: 681881141}
   - component: {fileID: 681881140}
+  - component: {fileID: 681881147}
   m_Layer: 0
   m_Name: forrest3
   m_TagString: Untagged
@@ -1537,6 +1552,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &681881147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681881139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 681881139}
 --- !u!1 &691991217
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,6 +1580,7 @@ GameObject:
   - component: {fileID: 691991220}
   - component: {fileID: 691991219}
   - component: {fileID: 691991218}
+  - component: {fileID: 691991225}
   m_Layer: 0
   m_Name: plains4
   m_TagString: Untagged
@@ -1677,6 +1706,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &691991225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 691991217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 691991217}
 --- !u!1 &710406467
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,6 +2136,7 @@ GameObject:
   - component: {fileID: 792874620}
   - component: {fileID: 792874619}
   - component: {fileID: 792874618}
+  - component: {fileID: 792874625}
   m_Layer: 0
   m_Name: mountain2
   m_TagString: Untagged
@@ -2219,6 +2262,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &792874625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 792874617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 792874617}
 --- !u!21 &814364712
 Material:
   serializedVersion: 6
@@ -2737,6 +2793,7 @@ GameObject:
   - component: {fileID: 1212703504}
   - component: {fileID: 1212703503}
   - component: {fileID: 1212703510}
+  - component: {fileID: 1212703511}
   m_Layer: 0
   m_Name: TankTarget
   m_TagString: Untagged
@@ -2838,10 +2895,10 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: '--- EMPTY ---'
+  mTrackableName: tokenTankCard_real
   mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: '--- EMPTY ---'
+  mDataSetPath: Vuforia/MRTI-Tanks.xml
   mAspectRatio: 1
   mImageTargetType: 0
   mWidth: 0.09
@@ -2887,6 +2944,28 @@ MonoBehaviour:
   - {fileID: 1910070268}
   - {fileID: 1697758142}
   playerTank: {fileID: 1212703502}
+--- !u!114 &1212703511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212703502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd7b3e066ae55904fb0f8a1aeac05e04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  visionRange: 2
+  defaultDamage: 25
+  fireRange: 1
+  damage: 25
+  nbSmokes: 2
+  tankTextureBasic: {fileID: 0}
+  tankTextureSelected: {fileID: 2100000, guid: 872bd5478358c6f4b8f57aeaca2d94be, type: 2}
+  tankTextureTargeted: {fileID: 2100000, guid: 343f7f93e8a928f419f1a5438e556566, type: 2}
+  HP: {fileID: 0}
 --- !u!1 &1247075511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2902,6 +2981,7 @@ GameObject:
   - component: {fileID: 1247075514}
   - component: {fileID: 1247075513}
   - component: {fileID: 1247075512}
+  - component: {fileID: 1247075519}
   m_Layer: 0
   m_Name: forrest6
   m_TagString: Untagged
@@ -3027,6 +3107,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1247075519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247075511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 1247075511}
+--- !u!1 &1315718090 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3143164482643096152, guid: fdcbfafb64b4341429d634042eec85de,
+    type: 3}
+  m_PrefabInstance: {fileID: 747134714}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1315718091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1315718090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 0}
 --- !u!1 &1356109915
 GameObject:
   m_ObjectHideFlags: 0
@@ -3480,6 +3592,7 @@ GameObject:
   - component: {fileID: 1490036410}
   - component: {fileID: 1490036409}
   - component: {fileID: 1490036408}
+  - component: {fileID: 1490036415}
   m_Layer: 0
   m_Name: forrest2
   m_TagString: Untagged
@@ -3605,6 +3718,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1490036415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1490036407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 1490036407}
 --- !u!1 &1496816510
 GameObject:
   m_ObjectHideFlags: 0
@@ -3620,6 +3746,7 @@ GameObject:
   - component: {fileID: 1496816513}
   - component: {fileID: 1496816512}
   - component: {fileID: 1496816511}
+  - component: {fileID: 1496816518}
   m_Layer: 0
   m_Name: plains1
   m_TagString: Untagged
@@ -3745,6 +3872,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1496816518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496816510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 1496816510}
 --- !u!1 &1501967577
 GameObject:
   m_ObjectHideFlags: 0
@@ -4434,6 +4574,7 @@ GameObject:
   - component: {fileID: 1697758145}
   - component: {fileID: 1697758144}
   - component: {fileID: 1697758143}
+  - component: {fileID: 1697758150}
   m_Layer: 0
   m_Name: forrest1
   m_TagString: Untagged
@@ -4559,6 +4700,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1697758150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1697758142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 1697758142}
 --- !u!1 &1724707888
 GameObject:
   m_ObjectHideFlags: 0
@@ -4574,6 +4728,7 @@ GameObject:
   - component: {fileID: 1724707891}
   - component: {fileID: 1724707890}
   - component: {fileID: 1724707889}
+  - component: {fileID: 1724707896}
   m_Layer: 0
   m_Name: mountain1
   m_TagString: Untagged
@@ -4699,6 +4854,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1724707896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1724707888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 1724707888}
 --- !u!1 &1728254889
 GameObject:
   m_ObjectHideFlags: 0
@@ -4714,6 +4882,7 @@ GameObject:
   - component: {fileID: 1728254892}
   - component: {fileID: 1728254891}
   - component: {fileID: 1728254890}
+  - component: {fileID: 1728254897}
   m_Layer: 0
   m_Name: forrest5
   m_TagString: Untagged
@@ -4839,6 +5008,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1728254897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728254889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 1728254889}
 --- !u!43 &1789460455
 Mesh:
   m_ObjectHideFlags: 0
@@ -5101,7 +5283,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: '--- EMPTY ---Material
+  m_Name: 'tokenTankCard_realMaterial
 
     19196'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
@@ -5116,7 +5298,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: c92f0348748f4d11af7044ac9c5550ad, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -5313,6 +5495,7 @@ GameObject:
   - component: {fileID: 1910070271}
   - component: {fileID: 1910070270}
   - component: {fileID: 1910070269}
+  - component: {fileID: 1910070276}
   m_Layer: 0
   m_Name: plains2
   m_TagString: Untagged
@@ -5438,6 +5621,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1910070276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910070268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 1910070268}
 --- !u!1 &2036311208
 GameObject:
   m_ObjectHideFlags: 0
@@ -5941,6 +6137,7 @@ GameObject:
   - component: {fileID: 2113793837}
   - component: {fileID: 2113793836}
   - component: {fileID: 2113793835}
+  - component: {fileID: 2113793842}
   m_Layer: 0
   m_Name: plains3
   m_TagString: Untagged
@@ -6050,7 +6247,7 @@ MonoBehaviour:
   mAspectRatio: 1
   mImageTargetType: 0
   mWidth: 0.09
-  mHeight: 0.044579
+  mHeight: 0.09
 --- !u!4 &2113793841
 Transform:
   m_ObjectHideFlags: 0
@@ -6066,3 +6263,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2113793842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113793834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc4abeb42805d246bbdf5f51e5badf7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  associatedTile: {fileID: 2113793834}

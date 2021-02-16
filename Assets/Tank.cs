@@ -35,6 +35,7 @@ public class Tank : MonoBehaviour
     void Update()
     {
         //Debug.Log("La visionRange du tank est de: " + this.visionRange);
+        
     }
 
     private void OnDestroy()
@@ -88,8 +89,14 @@ public class Tank : MonoBehaviour
     public void applyTileBonus(GameObject tile)
     {
         //reset the vision range so it doesnt stack infinitely
-        this.damage = this.defaultDamage;
-        this.damage = this.damage + tile.GetComponent<tileStats>().getTileBonus();
+        Debug.Log(tile.name);
+        int modifier = tile.GetComponent<tileStats>().getTileBonus();
+        if (this.defaultDamage + modifier != this.damage)
+        {
+            this.damage = this.defaultDamage + modifier;
+        }
+        
+        
     }
     private static void Attack(GameObject attacker, GameObject defender)
     {

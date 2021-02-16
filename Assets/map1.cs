@@ -28,9 +28,9 @@ public class map1 : MonoBehaviour
         map[3, 2] = 0;
 
         //init the array containing all the tokens given as an global argument
-        for(int i = 0; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
-            for(int j = 0; j < 3; j++)
+            for (int j = 0; j < 3; j++)
             {
                 tokenMap[i, j] = tokens[i + j];
             }
@@ -50,17 +50,17 @@ public class map1 : MonoBehaviour
     public bool correctMove(GameObject tank)
     {
         int[] move = getCoords();
-        if(oldPos[0] != move[0] && oldPos[1] != move[1]) return false;
+        if (oldPos[0] != move[0] && oldPos[1] != move[1]) return false;
         if (oldPos[0] - move[0] > 1 || oldPos[0] - move[0] < -1) return false;
         if (oldPos[1] - move[1] > 1 || oldPos[1] - move[1] < -1) return false;
-        return true;   
+        return true;
     }
 
     //chek if the tank is in range to fire on the target chosen
     public bool isInRange(GameObject tank, int[] fire)
     {
         int[] tankPos = getCoords();
-       
+
         if (tankPos[0] != fire[0] && tankPos[1] != fire[1]) return false;
         if (tankPos[0] - fire[0] > 2 || tankPos[0] - fire[0] < -2) return false;
         if (tankPos[1] - fire[1] > 2 || tankPos[1] - fire[1] < -2) return false;
@@ -80,8 +80,8 @@ public class map1 : MonoBehaviour
     public int[] getCoords()
     {
         int[] res = new int[2];
-        res[0] = -1;
-        res[1] = -1;
+        res[0] = 0;
+        res[1] = 0;
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 3; j++)
@@ -89,9 +89,12 @@ public class map1 : MonoBehaviour
                 bool visible = tokenMap[i, j].GetComponent<DetectTarget>().isTrackingMarker();
                 if (!visible)
                 {
-                    res[0] = i;
-                    res[1] = j;
-                    Debug.Log("Pos i: " + i + " Pos j: "+j);
+                    res[0] = j;
+                    res[1] = i;
+                    Debug.Log("Pos i: " + i + " Pos j: " + j);
+                    playerTank.GetComponent<Tank>().applyTileBonus(tokenMap[i, j]);
+                    Debug.Log("tank damage is :" + playerTank.GetComponent<Tank>().getDamage());
+
                     return res;
                 }
 
@@ -100,5 +103,7 @@ public class map1 : MonoBehaviour
         return res;
     }
 
-   
+
+
+
 }
