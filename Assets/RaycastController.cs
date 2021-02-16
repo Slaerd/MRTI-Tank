@@ -12,8 +12,7 @@ public class RaycastController : MonoBehaviour
     private GameObject selectedTank = null;
     private GameObject targetedTank = null;
 
-    private int tankLayerA = 1 << 8;
-    private int tankLayerE = 1 << 9;
+    private int tankLayer = 1 << 8;
 
     [SerializeField] private Camera arCam;
     [SerializeField] private GameObject effectUI;
@@ -58,7 +57,7 @@ public class RaycastController : MonoBehaviour
                     selectedThisLoop = 0; 
                     ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayerA)) //Searches for ally tanks
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayer)) //Searches for ally tanks
                     {
                         selectedTank?.GetComponent<Tank>().Unselect();              //swap out selected tank
                         hit.transform.gameObject.GetComponent<Tank>().Select();     //for the new one
@@ -77,7 +76,7 @@ public class RaycastController : MonoBehaviour
                         Ray ray2 = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                         RaycastHit hit2;
 
-                        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerE) //Look for enemy tanks 
+                        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayer) //Look for enemy tanks 
                             && !GameObject.ReferenceEquals(selectedTank, hit2.transform.gameObject))
                         {
                             targetedTank = hit2.transform.gameObject;
@@ -112,7 +111,7 @@ public class RaycastController : MonoBehaviour
                 {
                     ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayerA))
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayer))
                     {
                         selectedTank.GetComponent<Tank>().Effect(hit.transform.GetComponent<Tank>());
                         targetMode = false;
