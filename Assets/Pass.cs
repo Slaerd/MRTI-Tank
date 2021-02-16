@@ -24,7 +24,6 @@ public class Pass : MonoBehaviour
 
     public void NextRound()
     {
-        
         toggle = !toggle;
         roundNumber.text = (int.Parse(roundNumber.text) + 1).ToString();
         blue.SetActive(toggle);
