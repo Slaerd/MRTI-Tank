@@ -157,8 +157,8 @@ public class RaycastController : MonoBehaviour
 
     private void EndGame()
     {
-        if (playerTurn) {
-            endGame.text = "UR BAD";
+        if (!playerTurn) {
+            endGame.text = "YOU LOST :c";
             endGame.color = Color.red;
         }
         else

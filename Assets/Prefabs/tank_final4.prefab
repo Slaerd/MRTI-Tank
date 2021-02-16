@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5218928642358643444}
   - component: {fileID: 4682422487796292620}
   - component: {fileID: 2988922939038516161}
+  - component: {fileID: 5179182487912772597}
   m_Layer: 5
   m_Name: TankStats
   m_TagString: Untagged
@@ -101,6 +102,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5179182487912772597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225954602879788268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00003c289d06ea3458b082b0e9e49501, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arCam: {fileID: 0}
+  myself: {fileID: 3225954602879788268}
 --- !u!1 &4123013545109427373
 GameObject:
   m_ObjectHideFlags: 0
