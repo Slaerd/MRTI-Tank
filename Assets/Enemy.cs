@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
+
+
     public GameObject ennemyTank;
     private int hp = 100;
+    public UnityEvent onDestruction;
     void Start()
     {
 
@@ -18,7 +22,7 @@ public class Enemy : MonoBehaviour
         if (IsDestroyed())
         {
             //faire ce que l'on veut quand la game est finie
-            Destroy();
+            ennemyTank.SetActive(false);
         }
     }
 
@@ -38,14 +42,14 @@ public class Enemy : MonoBehaviour
         return this.hp;
     }
 
-    public void takeDamage(int damage)
+    public void receiveDamage(int damage)
     {
         this.hp = this.hp - damage;
+        if(hp <= 0)
+        {
+            onDestruction.Invoke();
+        }
     }
 
-    public void Destroy()
-    {
-        Object.Destroy(ennemyTank);
-    }
 
 }
