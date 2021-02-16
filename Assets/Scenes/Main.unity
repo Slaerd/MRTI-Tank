@@ -3864,7 +3864,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513045923}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.148, z: 0}
+  m_LocalPosition: {x: 0, y: 0.127, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 1724707895}
@@ -5722,12 +5722,12 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d79a9b18b0888964da0f6782bf2840ba,
         type: 3}
       propertyPath: m_Name
-      value: tank_final4
+      value: enemy_tank
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d79a9b18b0888964da0f6782bf2840ba,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.13
+      value: 0.008
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: d79a9b18b0888964da0f6782bf2840ba,
         type: 3}
@@ -5798,7 +5798,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 343f7f93e8a928f419f1a5438e556566, type: 2}
+      objectReference: {fileID: 2100000, guid: 7fe395bbd90394966be53d2785cef287, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d79a9b18b0888964da0f6782bf2840ba, type: 3}
 --- !u!4 &2053862625 stripped
