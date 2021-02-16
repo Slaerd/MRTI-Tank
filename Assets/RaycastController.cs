@@ -74,17 +74,13 @@ public class RaycastController : MonoBehaviour
 
                 if (Input.touches[0].phase == TouchPhase.Moved)
                 {
-                    if (dragMotion) //if we're in the same loop
+                    Ray ray2 = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                    RaycastHit hit2;
+                    if (dragMotion && Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerE) //if we're in the same loop
+                        && !GameObject.ReferenceEquals(selectedTank, hit2.transform.gameObject))
                     {
-                        Ray ray2 = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                        RaycastHit hit2;
-
-                        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerE) //Look for enemy tanks 
-                            && !GameObject.ReferenceEquals(selectedTank, hit2.transform.gameObject))
-                        {
                             targetedTank = hit2.transform.gameObject;
                             targetedTank.GetComponent<Tank>().Target(); //Attack feedback
-                        }
                     }
                     else
                     {
@@ -98,6 +94,8 @@ public class RaycastController : MonoBehaviour
                     if (dragMotion && targetedTank != null) //If there's a target
                     {
                         onTankDrag.Invoke(selectedTank, targetedTank); //Attack
+                        targetedTank.GetComponent<Tank>().Untarget();
+                        targetedTank = null;
                     }
                     if (selectedThisLoop == 0 && targetMode != true)    //Only unselect when clicking off the tank
                     {                                                   //AND we're not touching the effect UI
@@ -158,7 +156,7 @@ public class RaycastController : MonoBehaviour
     private void EndGame()
     {
         if (!playerTurn) {
-            endGame.text = "YOU LOST :c";
+            endGame.text = "YOU\nLOST";
             endGame.color = Color.red;
         }
         else
