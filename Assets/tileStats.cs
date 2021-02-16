@@ -26,11 +26,11 @@ public class tileStats : MonoBehaviour
     public int getTileBonus()
     {
         if (tileName.Contains("mountain"))
-            return 1;
+            return 10;
         if (tileName.Contains("plain"))
             return 0;
         if (tileName.Contains("forrest"))
-            return -1;
+            return -10;
         //if no tile corresponds, send an "error"
         return -100;
     }

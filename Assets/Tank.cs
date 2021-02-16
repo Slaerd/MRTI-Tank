@@ -35,7 +35,7 @@ public class Tank : MonoBehaviour
     void Update()
     {
         //apl cette ligne en lui donant le gameobject (la tile) sur laquelle tu es en train de tester
-        applyTileBonus(currentTile);
+        //applyTileBonus(currentTile);
         //Debug.Log("La visionRange du tank est de: " + this.visionRange);
     }
 
