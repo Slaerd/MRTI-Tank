@@ -44,7 +44,6 @@ public class map1 : MonoBehaviour
     void Update()
     {
         getCoords();
-        Debug.Log("Ca ecrit klkechose");
     }
 
     /* Checks if the move performed */
@@ -82,14 +81,12 @@ public class map1 : MonoBehaviour
     {
         int[] res = new int[2];
         res[0] = -1;
-        res[1] = 1;
+        res[1] = -1;
         for (int i = 0; i < 4; i++)
         {
             for (int j = 0; j < 3; j++)
             {
-                tokenMap[i,j].GetComponent<ChildObjectsActivator > ().Start();
-                // bool visible = tokenMap[i, j].GetComponent<ChildObjectsActivator>().getVisibleTile();
-                bool visible = true;
+                bool visible = tokenMap[i, j].GetComponent<DetectTarget>().isTrackingMarker();
                 if (!visible)
                 {
                     res[0] = i;
