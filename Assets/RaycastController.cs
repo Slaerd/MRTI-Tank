@@ -41,7 +41,7 @@ public class RaycastController : MonoBehaviour
         if (selectedTank != null) 
         { //TODO
             effectUI.GetComponent<Transform>().position =
-                arCam.WorldToScreenPoint(selectedTank.GetComponent<Transform>().position);
+               new Vector3(200,0,0) + arCam.WorldToScreenPoint(selectedTank.GetComponent<Transform>().position);
             effectUI.SetActive(selectedTank.GetComponent<Renderer>().isVisible);
         }
     }
@@ -77,7 +77,7 @@ public class RaycastController : MonoBehaviour
                         Ray ray2 = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                         RaycastHit hit2;
 
-                        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerE) //Look for enemy tanks 
+                        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerA) //Look for enemy tanks 
                             && !GameObject.ReferenceEquals(selectedTank, hit2.transform.gameObject))
                         {
                             targetedTank = hit2.transform.gameObject;

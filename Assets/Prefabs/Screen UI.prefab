@@ -343,8 +343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerTurn: 0
-  tankTextureBasic: {fileID: 2100000, guid: ba32e2aeba06c406ab18bd1c5659c386, type: 2}
-  tankTextureSelected: {fileID: 2100000, guid: 872bd5478358c6f4b8f57aeaca2d94be, type: 2}
   arCam: {fileID: 4533560214618297657, guid: e8cb33290dc9c044d856af3d6d3e3cb6, type: 3}
   effectUI: {fileID: 6199328516014534800}
   targetUI: {fileID: 8262982249097216128}
@@ -1012,7 +1010,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.9}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4623252386687876080
@@ -1134,7 +1132,7 @@ MonoBehaviour:
             m_BoolArgument: 1
           m_CallState: 2
         - m_Target: {fileID: 3143164482643096099}
-          m_MethodName: setTargetMode
+          m_MethodName: SetTargetMode
           m_Mode: 6
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
