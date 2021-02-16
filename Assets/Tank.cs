@@ -104,23 +104,32 @@ public class Tank : MonoBehaviour
             defender.GetComponent<Tank>().receiveDamage(attacker.GetComponent<Tank>().getDamage());
     }
 
-    public void ToggleSelect()
+    public void Effect(Tank target)
     {
-        if (selected)
-            Untarget();
-        else
-            gameObject.GetComponent<MeshRenderer>().material = tankTextureSelected;
-        selected = !selected;
+        target.receiveDamage(-50);
+        target.Target();
     }
 
-    public void Untarget()
+    public void Select()
+    {
+        gameObject.GetComponent<MeshRenderer>().material = tankTextureSelected;
+        selected = true;
+    }
+
+    public void Unselect()
     {
         gameObject.GetComponent<MeshRenderer>().material = tankTextureBasic;
+        selected = false;
     }
 
     public void Target()
     {
         gameObject.GetComponent<MeshRenderer>().material = tankTextureTargeted;
+    }
+
+    public void Untarget()
+    {
+        gameObject.GetComponent<MeshRenderer>().material = tankTextureBasic;
     }
 
     // GETTERS
