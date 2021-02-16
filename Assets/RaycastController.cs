@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class RaycastController : MonoBehaviour
 {
@@ -12,12 +13,13 @@ public class RaycastController : MonoBehaviour
     private GameObject selectedTank = null;
     private GameObject targetedTank = null;
 
-    private int tankLayerA = 1 << 8;
+    private int tankLayerP = 1 << 8;
     private int tankLayerE = 1 << 9;
 
     [SerializeField] private Camera arCam;
     [SerializeField] private GameObject effectUI;
     [SerializeField] private GameObject targetUI;
+    [SerializeField] private Text endGame;
 
     private bool dragMotion; //Checks if selection is done in the same motion as movement for attacking
 
@@ -26,6 +28,7 @@ public class RaycastController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Tank.on0HP += EndGame;
         Pass.switchTurn += SetPlayerTurn;
         playerTurn = true;
         targetMode = false;
@@ -39,16 +42,15 @@ public class RaycastController : MonoBehaviour
     {
         RaycastSelect();
         if (selectedTank != null) 
-        { //TODO
-            effectUI.GetComponent<Transform>().position =
-               new Vector3(200,0,0) + arCam.WorldToScreenPoint(selectedTank.GetComponent<Transform>().position);
+        {
+            effectUI.GetComponent<RectTransform>().position = new Vector3(200,0,0) + arCam.WorldToScreenPoint(selectedTank.GetComponent<Transform>().position);
             effectUI.SetActive(selectedTank.GetComponent<Renderer>().isVisible);
         }
     }
 
     public void RaycastSelect()
     {
-        if (Input.touchCount > 0 && playerTurn) //no interaction when not your turn
+        if (Input.touchCount > 0) //no interaction when not your turn
         {
             Ray ray;
             RaycastHit hit = new RaycastHit();
@@ -58,7 +60,7 @@ public class RaycastController : MonoBehaviour
                     selectedThisLoop = 0; 
                     ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayerA)) //Searches for ally tanks
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayerP)) //Searches for ally tanks
                     {
                         selectedTank?.GetComponent<Tank>().Unselect();              //swap out selected tank
                         hit.transform.gameObject.GetComponent<Tank>().Select();     //for the new one
@@ -77,7 +79,7 @@ public class RaycastController : MonoBehaviour
                         Ray ray2 = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                         RaycastHit hit2;
 
-                        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerA) //Look for enemy tanks 
+                        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerE) //Look for enemy tanks 
                             && !GameObject.ReferenceEquals(selectedTank, hit2.transform.gameObject))
                         {
                             targetedTank = hit2.transform.gameObject;
@@ -112,7 +114,7 @@ public class RaycastController : MonoBehaviour
                 {
                     ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayerA))
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayerP))
                     {
                         selectedTank.GetComponent<Tank>().Effect(hit.transform.GetComponent<Tank>());
                         targetMode = false;
@@ -131,6 +133,16 @@ public class RaycastController : MonoBehaviour
     public void SetPlayerTurn(bool b)
     {
         playerTurn = b;
+        if (b)
+        {
+            tankLayerP = 1 << 8;
+            tankLayerE = 1 << 9;
+        }
+        else
+        {
+            tankLayerP = 1 << 9;
+            tankLayerE = 1 << 8;
+        }
     }
 
     public void SetTargetMode(bool b)
@@ -141,5 +153,19 @@ public class RaycastController : MonoBehaviour
     public void AntiDeselect()
     {
         selectedThisLoop++;
+    }
+
+    private void EndGame()
+    {
+        if (playerTurn) {
+            endGame.text = "UR BAD";
+            endGame.color = Color.red;
+        }
+        else
+        {
+            endGame.text = "GGEZ";
+            endGame.color = Color.green;
+        }
+            
     }
 }

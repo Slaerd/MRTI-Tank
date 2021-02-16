@@ -47,7 +47,7 @@ public class map1 : MonoBehaviour
     }
 
     /* Checks if the move performed */
-    public bool correctMove(GameObject tank)
+    /*public bool correctMove(GameObject tank)
     {
         int[] move = getCoords();
         if (oldPos[0] != move[0] && oldPos[1] != move[1]) return false;
@@ -65,16 +65,16 @@ public class map1 : MonoBehaviour
         if (tankPos[0] - fire[0] > 2 || tankPos[0] - fire[0] < -2) return false;
         if (tankPos[1] - fire[1] > 2 || tankPos[1] - fire[1] < -2) return false;
         return true;
-    }
+    }*/
 
     /* Used to change the "map" grid when placing the tank at the begining of the game */
-    public void placeTank(GameObject tank)
+    /*public void placeTank(GameObject tank)
     {
         int[] pos = getCoords();
         map[pos[0], pos[1]] = 1;
         map[oldPos[0], oldPos[1]] = 0;
         oldPos = pos;
-    }
+    }*/
 
     //retrieves where the tank is at the moment of the function being called
     public int[] getCoords()
@@ -102,8 +102,4 @@ public class map1 : MonoBehaviour
         }
         return res;
     }
-
-
-
-
 }

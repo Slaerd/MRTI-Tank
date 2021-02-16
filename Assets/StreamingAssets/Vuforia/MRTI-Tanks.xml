@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QCARConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="qcar_config.xsd">
   <Tracking>
+    <ImageTarget name="plains1_" size="0.090000 0.058216" />
+    <ImageTarget name="mountain1_" size="0.090000 0.058000" />
+    <ImageTarget name="forrest6_" size="0.090000 0.058026" />
+    <ImageTarget name="forrest4_" size="0.090000 0.058000" />
+    <ImageTarget name="forrest2_" size="0.090000 0.058000" />
+    <ImageTarget name="tokenCard_real-2" size="0.090000 0.057839" />
+    <ImageTarget name="tokenTankCard_real" size="0.090000 0.057789" />
+    <ImageTarget name="ennemyTank" size="0.090000 0.058046" />
     <ImageTarget name="plains3" size="0.090000 0.090000" />
     <ImageTarget name="forrest1" size="0.090000 0.048150" />
-    <ImageTarget name="tokenTankCard_real" size="0.090000 0.090000" />
     <ImageTarget name="plains2" size="0.090000 0.060968" />
     <ImageTarget name="plains4" size="0.090000 0.045000" />
     <ImageTarget name="plains1" size="0.090000 0.067500" />

@@ -17,10 +17,9 @@ public class Tank : MonoBehaviour
     [SerializeField] private Material tankTextureSelected;
     [SerializeField] private Material tankTextureTargeted;
     [SerializeField] private Text HP;
+    [SerializeField] private Text ATK;
 
-
-
-    //public GameObject currentTile;
+    public static Action on0HP;
     private bool bonusRangeActivated = false;
     // Start is called before the first frame update
     void Start()
@@ -54,6 +53,10 @@ public class Tank : MonoBehaviour
     {
         this.health -= dmg;
         HP.text = this.health.ToString();
+        if (isDestroyed())
+        {
+            on0HP.Invoke();
+        }
     }
 
     //check if game is over
@@ -93,9 +96,9 @@ public class Tank : MonoBehaviour
         {
             this.damage = this.defaultDamage + modifier;
         }
-        
-        
+        ATK.text = damage.ToString();
     }
+
     private static void Attack(GameObject attacker, GameObject defender)
     {
         if (!GameObject.ReferenceEquals(attacker, defender))
@@ -105,7 +108,6 @@ public class Tank : MonoBehaviour
     public void Effect(Tank target)
     {
         target.receiveDamage(-50);
-        target.Target();
     }
 
     public void Select()
