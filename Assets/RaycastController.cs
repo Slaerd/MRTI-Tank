@@ -6,26 +6,26 @@ using UnityEngine.Events;
 
 public class RaycastController : MonoBehaviour
 {
-    public bool playerTurn;
+    public bool playerTurn; //public cause I made a terrible mistake
     private bool targetMode;
-    private int counter;
+    private int selectedThisLoop;
     private GameObject selectedTank = null;
     private GameObject targetedTank = null;
-    private int uiLayer = 1 << 5;
-    private int tankLayerA = 1 << 8;
-    private int tankLayerE = 1 << 9;
-    [SerializeField] private Material tankTextureBasic;
-    [SerializeField] private Material tankTextureSelected;
+
+    private int tankLayer = 1 << 8;
+
     [SerializeField] private Camera arCam;
     [SerializeField] private GameObject effectUI;
     [SerializeField] private GameObject targetUI;
-    private bool dragMotion;
+
+    private bool dragMotion; //Checks if selection is done in the same motion as movement for attacking
+
     public static Action<GameObject,GameObject> onTankDrag;
 
     // Start is called before the first frame update
     void Start()
     {
-        Pass.switchTurn += setPlayerTurn;
+        Pass.switchTurn += SetPlayerTurn;
         playerTurn = true;
         targetMode = false;
         dragMotion = false;
@@ -38,8 +38,8 @@ public class RaycastController : MonoBehaviour
     {
         RaycastSelect();
         if (selectedTank != null) 
-        {
-            effectUI.GetComponent<RectTransform>().position =
+        { //TODO
+            effectUI.GetComponent<Transform>().position =
                 arCam.WorldToScreenPoint(selectedTank.GetComponent<Transform>().position);
             effectUI.SetActive(selectedTank.GetComponent<Renderer>().isVisible);
         }
@@ -47,23 +47,23 @@ public class RaycastController : MonoBehaviour
 
     public void RaycastSelect()
     {
-        if (Input.touchCount > 0 && playerTurn)
+        if (Input.touchCount > 0 && playerTurn) //no interaction when not your turn
         {
             Ray ray;
             RaycastHit hit = new RaycastHit();
             if (!targetMode) {
                 if (Input.touches[0].phase == TouchPhase.Began)
                 {
-                    counter = 0;
-                    Debug.Log("Touch");
+                    selectedThisLoop = 0; 
                     ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayerA))
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayer)) //Searches for ally tanks
                     {
-                        selectedTank?.GetComponent<Tank>().Unselect();
-                        hit.transform.gameObject.GetComponent<Tank>().Select();
+                        selectedTank?.GetComponent<Tank>().Unselect();              //swap out selected tank
+                        hit.transform.gameObject.GetComponent<Tank>().Select();     //for the new one
+
                         selectedTank = hit.transform.gameObject;
-                        counter++;
+                        selectedThisLoop++;
                         dragMotion = true;
                     }
 
@@ -71,33 +71,33 @@ public class RaycastController : MonoBehaviour
 
                 if (Input.touches[0].phase == TouchPhase.Moved)
                 {
-                    if (dragMotion)
+                    if (dragMotion) //if we're in the same loop
                     {
                         Ray ray2 = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
                         RaycastHit hit2;
 
-                        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayerA)
+                        if (Physics.Raycast(ray2, out hit2, Mathf.Infinity, tankLayer) //Look for enemy tanks 
                             && !GameObject.ReferenceEquals(selectedTank, hit2.transform.gameObject))
                         {
                             targetedTank = hit2.transform.gameObject;
-                            targetedTank.GetComponent<Tank>().Target();
+                            targetedTank.GetComponent<Tank>().Target(); //Attack feedback
                         }
-                        else
-                        {
-                            targetedTank?.GetComponent<Tank>().Untarget();
-                            targetedTank = null;
-                        }
+                    }
+                    else
+                    {
+                        targetedTank?.GetComponent<Tank>().Untarget();
+                        targetedTank = null;
                     }
                 }
 
                 if (Input.touches[0].phase == TouchPhase.Ended)
                 {
-                    if (dragMotion && targetedTank != null)
+                    if (dragMotion && targetedTank != null) //If there's a target
                     {
-                        onTankDrag.Invoke(selectedTank, targetedTank);
+                        onTankDrag.Invoke(selectedTank, targetedTank); //Attack
                     }
-                    if (counter == 0 && targetMode != true)
-                    {
+                    if (selectedThisLoop == 0 && targetMode != true)    //Only unselect when clicking off the tank
+                    {                                                   //AND we're not touching the effect UI
                         effectUI.SetActive(false);
                         selectedTank?.GetComponent<Tank>().Unselect();
                         selectedTank = null;
@@ -105,15 +105,14 @@ public class RaycastController : MonoBehaviour
                     
                     dragMotion = false;
                 }
-            }else//Target stuff
+            }else
             {
                 if (Input.touches[0].phase == TouchPhase.Began)
                 {
-                    Debug.Log("Touch");
                     ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
 
-                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayerA))
-                    {//selected sometimes empty
+                    if (Physics.Raycast(ray, out hit, Mathf.Infinity, tankLayer))
+                    {
                         selectedTank.GetComponent<Tank>().Effect(hit.transform.GetComponent<Tank>());
                         targetMode = false;
                         targetUI.SetActive(false);
@@ -128,18 +127,18 @@ public class RaycastController : MonoBehaviour
         onTankDrag = null;
     }
 
-    public void setPlayerTurn(bool b)
+    public void SetPlayerTurn(bool b)
     {
         playerTurn = b;
     }
 
-    public void setTargetMode(bool b)
+    public void SetTargetMode(bool b)
     {
         targetMode = b;
     }
 
     public void AntiDeselect()
     {
-        counter++;
+        selectedThisLoop++;
     }
 }

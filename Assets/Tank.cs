@@ -13,7 +13,6 @@ public class Tank : MonoBehaviour
     public int fireRange = 1;
     public int damage = 25;
     public int nbSmokes = 2;
-    private bool selected;
     [SerializeField] private Material tankTextureBasic;
     [SerializeField] private Material tankTextureSelected;
     [SerializeField] private Material tankTextureTargeted;
@@ -26,7 +25,6 @@ public class Tank : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        selected = false;
         RaycastController.onTankDrag += Attack;
         tankTextureBasic = gameObject.GetComponent<MeshRenderer>().material;
     }
@@ -113,13 +111,11 @@ public class Tank : MonoBehaviour
     public void Select()
     {
         gameObject.GetComponent<MeshRenderer>().material = tankTextureSelected;
-        selected = true;
     }
 
     public void Unselect()
     {
         gameObject.GetComponent<MeshRenderer>().material = tankTextureBasic;
-        selected = false;
     }
 
     public void Target()
