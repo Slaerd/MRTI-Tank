@@ -9,7 +9,7 @@ public class Tank : MonoBehaviour
 {
     public int health = 100;
     public int visionRange = 2;
-    public int defaultVisionRange = 2;
+    public int defaultDamage = 25;
     public int fireRange = 1;
     public int damage = 25;
     public int nbSmokes = 2;
@@ -34,8 +34,6 @@ public class Tank : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //apl cette ligne en lui donant le gameobject (la tile) sur laquelle tu es en train de tester
-       // applyTileBonus(currentTile);
         //Debug.Log("La visionRange du tank est de: " + this.visionRange);
     }
 
@@ -79,19 +77,19 @@ public class Tank : MonoBehaviour
         {
             this.bonusRangeActivated = false;
             this.visionRange = this.visionRange - 2;
-            this.defaultVisionRange = this.defaultVisionRange - 2;
+
         }
         this.bonusRangeActivated = true;
         this.visionRange = this.visionRange + 2;
-        this.defaultVisionRange = this.defaultVisionRange + 2;
+
     }
 
     //retrievs the tileBonus from the tile the tank is located on
     public void applyTileBonus(GameObject tile)
     {
         //reset the vision range so it doesnt stack infinitely
-        this.visionRange = this.defaultVisionRange;
-        this.visionRange = this.visionRange + tile.GetComponent<tileStats>().getTileBonus();
+        this.damage = this.defaultDamage;
+        this.damage = this.damage + tile.GetComponent<tileStats>().getTileBonus();
     }
     private static void Attack(GameObject attacker, GameObject defender)
     {
@@ -148,5 +146,4 @@ public class Tank : MonoBehaviour
     {
         return this.bonusRangeActivated;
     }
-
 }

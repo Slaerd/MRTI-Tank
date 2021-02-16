@@ -142,7 +142,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: e353e598fa37471fa75cdfdd9a40236e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 217cf9efad02442c9f7718060691d7c3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -586,7 +586,7 @@ Mesh:
     vertexCount: 4
     localAABB:
       m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0.5, y: 0, z: 0.2476611}
+      m_Extent: {x: 0.5, y: 0, z: 0.5}
   m_Shapes:
     vertices: []
     shapes: []
@@ -665,7 +665,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 128
-    _typelessdata: 000000bf00000000df9a7dbe000000000000803f000000000000000000000000000000bf00000000df9a7d3e000000000000803f00000000000000000000803f0000003f00000000df9a7dbe000000000000803f000000000000803f000000000000003f00000000df9a7d3e000000000000803f000000000000803f0000803f
+    _typelessdata: 000000bf00000000000000bf000000000000803f000000000000000000000000000000bf000000000000003f000000000000803f00000000000000000000803f0000003f00000000000000bf000000000000803f000000000000803f000000000000003f000000000000003f000000000000803f000000000000803f0000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -916,7 +916,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 58f14d78a49141d1a4096d356f405401, type: 3}
+        m_Texture: {fileID: 2800000, guid: 1ab8417a4c614dfea1647ec8a27dbb1c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -1107,7 +1107,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 1c47ec3138144cceb0ae7ba28cfd103d, type: 3}
+        m_Texture: {fileID: 2800000, guid: 9606c46cb2ef46109d96ec823d2adb26, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -1135,7 +1135,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: ca858805281941bf8e605f2e02790166, type: 3}
+        m_Texture: {fileID: 2800000, guid: 96adbf277a07477aa9d2cd221bafa3f0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -2073,7 +2073,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f1eddbbf009b47bd9243d474788ad043, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5b11819ee38e4500a65159e95efaa3a0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -2241,7 +2241,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 72f08019ad84485d9f1918ae2397c9d8, type: 3}
+        m_Texture: {fileID: 2800000, guid: 206db261528543a8877d3f769b1ecb83, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -2524,7 +2524,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 9e7a302782e74ac58ff7af0f005dbf44, type: 3}
+        m_Texture: {fileID: 2800000, guid: 499db013620e424693333a62f0873f1c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -2715,7 +2715,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d3ca7c9a4cf4447f9e7f736307fbe56c, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4f0ca297d1c64b2f837f3d067818285b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -2838,10 +2838,10 @@ MonoBehaviour:
   m_Script: {fileID: -1631628248, guid: bab6fa851cf5a1a4bba3cec5f191cb8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mTrackableName: tokenTankCard_real
+  mTrackableName: '--- EMPTY ---'
   mPreserveChildSize: 0
   mInitializedInEditor: 1
-  mDataSetPath: Vuforia/MRTI-Tanks.xml
+  mDataSetPath: '--- EMPTY ---'
   mAspectRatio: 1
   mImageTargetType: 0
   mWidth: 0.09
@@ -5101,7 +5101,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 'tokenTankCard_realMaterial
+  m_Name: '--- EMPTY ---Material
 
     19196'
   m_Shader: {fileID: 10752, guid: 0000000000000000f000000000000000, type: 0}
@@ -5116,7 +5116,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 6e2437f1e8cd4ead8fa3b57a193277b0, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -5144,7 +5144,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 4ef33b4ed0cf4db5a27f6bd23504488a, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5a10e63595a94d58a06c1747a9fd896e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -5264,7 +5264,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b51a97225aca4b5f8133800c4b8ca1d1, type: 3}
+        m_Texture: {fileID: 2800000, guid: 797c268234d846968e2e14c337d66489, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -5292,7 +5292,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: cb03e0dd7f5049ab8b0d1cd24df95021, type: 3}
+        m_Texture: {fileID: 2800000, guid: 6c122b8de33e4251a156f7dc43a818c4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -5920,7 +5920,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b28ec3d20b4a4868b93eabbb59a0b3d6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 99156fffb24544fe853c0e0d01f1078c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats: []
@@ -6047,7 +6047,7 @@ MonoBehaviour:
   mPreserveChildSize: 0
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/MRTI-Tanks.xml
-  mAspectRatio: 0.4953222
+  mAspectRatio: 1
   mImageTargetType: 0
   mWidth: 0.09
   mHeight: 0.044579
