@@ -20,11 +20,12 @@ public class RaycastController : MonoBehaviour
     [SerializeField] private GameObject effectUI;
     [SerializeField] private GameObject targetUI;
     [SerializeField] private Text endGame;
+    [SerializeField] private GameObject retry;
 
     private bool dragMotion; //Checks if selection is done in the same motion as movement for attacking
 
     public static Action<GameObject,GameObject> onTankDrag;
-
+    public static Action onReset;
     // Start is called before the first frame update
     void Start()
     {
@@ -126,6 +127,7 @@ public class RaycastController : MonoBehaviour
     private void OnDestroy()
     {
         onTankDrag = null;
+        onReset = null;
     }
 
     public void SetPlayerTurn(bool b)
@@ -164,6 +166,11 @@ public class RaycastController : MonoBehaviour
             endGame.text = "GGEZ";
             endGame.color = Color.green;
         }
-            
+        retry.SetActive(true);
+    }
+
+    public void LocalReset()
+    {
+        onReset.Invoke();
     }
 }

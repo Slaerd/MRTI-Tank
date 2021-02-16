@@ -25,6 +25,7 @@ public class Tank : MonoBehaviour
     void Start()
     {
         RaycastController.onTankDrag += Attack;
+        RaycastController.onReset += ResetTank;
         tankTextureBasic = gameObject.GetComponent<MeshRenderer>().material;
     }
 
@@ -37,6 +38,7 @@ public class Tank : MonoBehaviour
 
     private void OnDestroy()
     {
+        on0HP = null;
     }
 
     public void initTank(int hp, int vision, int fire, int dmg, int smokes)
@@ -159,5 +161,11 @@ public class Tank : MonoBehaviour
     public bool getBonusRangeActivated()
     {
         return this.bonusRangeActivated;
+    }
+
+    private void ResetTank()
+    {
+        health = 100;
+        HP.text = this.health.ToString();
     }
 }

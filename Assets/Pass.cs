@@ -23,6 +23,11 @@ public class Pass : MonoBehaviour
         
     }
 
+    private void OnDestroy()
+    {
+        switchTurn = null;
+    }
+
     public void NextRound()
     {
         toggle = !toggle;
